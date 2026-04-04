@@ -1,6 +1,8 @@
 // favicon
 (() => {
-  const href = '/assets/favicon.svg';
+  const script = document.currentScript;
+  const scriptUrl = script ? new URL(script.getAttribute('src'), document.baseURI) : null;
+  const href = scriptUrl ? new URL('../favicon.svg', scriptUrl).toString() : 'assets/favicon.svg';
   let favicon = document.querySelector('link[rel="icon"]');
 
   if (!favicon) {
